@@ -54,8 +54,8 @@ class TestDatabaseHandler(unittest.TestCase):
     def test_create_day(self):
         '''#create day should return the row id of the last row inserted into the database.'''
         db_handler = DatabaseHandler(TEST_DB_NAME)
-        last_row_id = db_handler.create_day(self.week.days[1])
-        self.assertEqual(last_row_id, 1)
+        day = db_handler.create_day(self.week.days[1])
+        self.assertEqual(day.id, 1)
 
     def test_read_day(self):
         '''read day should return a day object.'''

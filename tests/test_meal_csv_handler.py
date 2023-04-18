@@ -24,8 +24,8 @@ class TestMealCSVHandler(unittest.TestCase):
         with open(self.test_csv_file, 'w', newline='', encoding="UTF-8") as csvfile:
             csvfile.write("name,ingredients,prep_steps,cook_time,protein,day_of_week\n")
             for meal in self.meals:
-                csvfile.write(f"{meal.name},{';'.join(meal.ingredients)},{';'.join(meal.prep_steps)},{meal.cook_time},{meal.protein},{meal.day_name}\n")
-                logger.debug(f"{meal.name},{';'.join(meal.ingredients)},{';'.join(meal.prep_steps)},{meal.cook_time},{meal.protein},{meal.day_name}\n")
+                csvfile.write(f"{meal.name},{';'.join(meal.ingredients)},{';'.join(meal.prep_steps)},{meal.cook_time},{meal.protein},{meal.day_id}\n")
+                logger.debug(f"{meal.name},{';'.join(meal.ingredients)},{';'.join(meal.prep_steps)},{meal.cook_time},{meal.protein},{meal.day_id}\n")
 
     def tearDown(self):
         os.remove(self.test_csv_file)
@@ -40,7 +40,7 @@ class TestMealCSVHandler(unittest.TestCase):
             self.assertEqual(meal.prep_steps, loaded_meal.prep_steps)
             self.assertEqual(meal.cook_time, loaded_meal.cook_time)
             self.assertEqual(meal.protein, loaded_meal.protein)
-            self.assertEqual(meal.day_name, loaded_meal.day_name)
+            self.assertEqual(meal.day_id, loaded_meal.day_id)
 
     def test_save_to_csv(self):
         '''Test the save_to_csv method.'''

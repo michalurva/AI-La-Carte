@@ -38,23 +38,43 @@ class DatabaseHandler:
 
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS weeks (
-                id INTEGER PRIMARY KEY AUTOINCREMENT
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                sun INTEGER,
+                mon INTEGER,
+                tue INTEGER,
+                wed INTEGER,
+                thu INTEGER,
+                fri INTEGER,
+                sat INTEGER
             )
             """)
             conn.commit()
             self.db_conn = conn
 
-    def create_day(self, day: Day) -> int:
+    def create_day(self, day: Day) -> Day:
         '''Create a day in the database.'''
         with self.db_conn as conn:
             cursor = conn.cursor()
             cursor.execute("""
-            INSERT INTO days (name, week_id)
+            INSERT INTO days (week_id, name)
             VALUES (?, ?)
-            """, (day.name, day.week_id))
+            """, (day.week_id, day.name))
             conn.commit()
             day.id = cursor.lastrowid
-            return cursor.lastrowid
+            return day
+
+    def update_day(self, day: Day) -> Day:
+        '''Update a day in the database.'''
+        with self.db_conn as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+            UPDATE days
+            SET week_id = ?, name = ?
+            WHERE id = ?
+            """, (day.week_id, day.name, day.id))            
+            conn.commit()
+            day.id = cursor.lastrowid
+            return day
 
     def read_day(self, day_id: int) -> Optional[Day]:
         '''Read a day from the database.'''
@@ -69,7 +89,7 @@ class DatabaseHandler:
                 return None
 
 
-    def create_week(self, week: Week) -> int:
+    def create_week(self, week: Week) -> Week:
         '''Create a week in the database.'''
         with self.db_conn as conn:
             cursor = conn.cursor()
@@ -79,25 +99,41 @@ class DatabaseHandler:
             conn.commit()
             week_id = cursor.lastrowid
             for day in week.days:
-                day_id = self.create_day(day)
+                day.week_id = week_id  # Add this line to set week_id for each Day object before creating it
+                day = self.create_day(day)
                 cursor.execute("""
                 UPDATE days
                 SET week_id = ?
                 WHERE id = ?
-                """, (week_id, day_id))
+                """, (day.week_id, day.id))
             conn.commit()
             week.id = week_id
-            return week_id
+            return self.update_week(week)
 
-    def read_week(self, week_id: int) -> Optional[Week]:
+    def update_week(self, week: Week) -> Week:
+        '''Update a week in the database.'''
+        with self.db_conn as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+            UPDATE weeks
+            SET sun = ?, mon = ?, tue = ?, wed = ?, thu = ?, fri = ?, sat = ?
+            WHERE id = ?
+            """,
+            (week.sun.id, week.mon.id, week.tue.id, week.wed.id, week.thu.id, week.fri.id, week.sat.id,
+             week.id))
+            conn.commit()
+            return week
+
+    def read_week(self, week: Week) -> Optional[Week]:
         '''Read a week from the database.'''
         with self.db_conn as conn:
             cursor = conn.cursor()
-            cursor.execute("SELECT * FROM weeks WHERE id = ?", (week_id,))
+            cursor.execute("SELECT * FROM weeks WHERE id = ?", (week.id,))
             row = cursor.fetchone()
             if row:
                 week = Week()
-                cursor.execute("SELECT * FROM days WHERE week_id = ?", (week_id,))
+                week.id = row[0]
+                cursor.execute("SELECT * FROM days WHERE week_id = ?", (week.id,))
                 rows = cursor.fetchall()
                 for row in rows:
                     day = self.read_day(row[0])
@@ -106,7 +142,7 @@ class DatabaseHandler:
             else:
                 return None
 
-    def create_meal(self, meal: Meal) -> int:
+    def create_meal(self, meal: Meal) -> Meal:
         '''Create a meal in the database.'''
         with self.db_conn as conn:
             cursor = conn.cursor()
@@ -114,10 +150,10 @@ class DatabaseHandler:
             INSERT INTO meals (name, ingredients, prep_steps, cook_time, protein, day)
             VALUES (?, ?, ?, ?, ?, ?)
             """, (meal.name, ','.join(meal.ingredients), ';'.join(meal.prep_steps),
-                meal.cook_time, meal.protein, meal.day_name))
+                meal.cook_time, meal.protein, meal.day_id))
             conn.commit()
             meal.id = cursor.lastrowid
-            return cursor.lastrowid
+            return meal
 
     def read_meal(self, meal_id: int) -> Optional[Meal]:
         """Get a meal from the database by id."""
@@ -183,6 +219,16 @@ class DatabaseHandler:
             cursor.execute("DELETE FROM days WHERE id = ?", (day.id,))
             conn.commit()
             return cursor.rowcount == day.id
+
+    def drop_tables(self):
+        '''clean up the database'''
+        with self.db_conn as conn:
+            cursor = conn.cursor()
+            cursor.execute("DROP TABLE IF EXISTS days")
+            cursor.execute("DROP TABLE IF EXISTS meals")
+            cursor.execute("DROP TABLE IF EXISTS weeks")
+            conn.commit()
+            conn.close()
 
 def test():
     """Test the database handler."""

@@ -36,5 +36,5 @@ class MealCSVHandler:
                     'prep_steps': ';'.join(meal.prep_steps),
                     'cook_time': meal.cook_time,
                     'protein': meal.protein,
-                    'day_of_week': meal.day_name,
+                    'day_of_week': meal.day_id,
                 })

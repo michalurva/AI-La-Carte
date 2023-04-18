@@ -4,4 +4,6 @@ log.txt
 tests/log.txt
 .vscode/
 meal_planner.db
+test_db_handler_2.db
 meals_copy.csv
+data/calendar.csv
