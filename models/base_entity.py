@@ -13,7 +13,6 @@ class BaseEntity(ABC):
     @abstractmethod
     def to_dict(self) -> dict:
         '''Convert the object's properties to a dictionary.'''
-        pass        
 
     @classmethod
     def from_database(cls, database_handler, row_dict):
