@@ -32,7 +32,7 @@ class Week(BaseEntity):
         week.fri = row_dict['fri']
         week.sat = row_dict['sat']
         return week
-    
+
     def get_days_list(self):
         '''Get the week's days.'''
         return [self.sun, self.mon, self.tue, self.wed, self.thu, self.fri, self.sat]

@@ -47,7 +47,7 @@ class DatabaseHandler:
                 sat INTEGER
             )
             """)
-            conn.commit()           
+            conn.commit()
             self.db_conn = conn
 
     def save(self, entity: BaseEntity) -> BaseEntity:
@@ -89,7 +89,7 @@ class DatabaseHandler:
             cursor.execute(query, (entity_id,))
             row = cursor.fetchone()
             if row:
-                row_dict = self.create_row_dict(cursor, row)                
+                row_dict = self.create_row_dict(cursor, row)
                 entity = entity_class.from_database(database_handler=self, row_dict=row_dict)
                 return entity
             else:
@@ -100,7 +100,7 @@ class DatabaseHandler:
         entity_dict = entity.to_dict()
         keys = ', '.join(entity_dict.keys())
         values = tuple(entity_dict.values())
-        placeholders = ', '.join(['?'] * len(entity_dict))        
+        placeholders = ', '.join(['?'] * len(entity_dict))
         return keys, values, placeholders
 
     def create_row_dict(self, cursor, row):

@@ -5,10 +5,15 @@ from models.day import Day
 from models.week import Week
 
 class TestDatabaseHandler(unittest.TestCase):
+    '''Test the DatabaseHandler class.'''
 
     def setUp(self):
         self.db_handler = DatabaseHandler("test_database_handler.db")
-        self.meal = Meal('Meat and Stuff', ["Meat", "Onions", "Peppers"], ["Cut Meat", "etc, etc..."], 30, db_handler=self.db_handler)
+        self.meal = Meal('Meat and Stuff',
+                         ["Meat", "Onions", "Peppers"],
+                         ["Cut Meat", "etc, etc..."],
+                         30,
+                         db_handler=self.db_handler)
         self.day = Day('Monday', db_handler=self.db_handler)
         self.week = Week(db_handler=self.db_handler)
         self.create_test_table()

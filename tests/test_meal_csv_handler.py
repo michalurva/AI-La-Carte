@@ -24,8 +24,14 @@ class TestMealCSVHandler(unittest.TestCase):
         with open(self.test_csv_file, 'w', newline='', encoding="UTF-8") as csvfile:
             csvfile.write("name,ingredients,prep_steps,cook_time,protein,day_of_week\n")
             for meal in self.meals:
-                csvfile.write(f"{meal.name},{';'.join(meal.ingredients)},{';'.join(meal.prep_steps)},{meal.cook_time},{meal.protein},{meal.day_id}\n")
-                logger.debug(f"{meal.name},{';'.join(meal.ingredients)},{';'.join(meal.prep_steps)},{meal.cook_time},{meal.protein},{meal.day_id}\n")
+                _n = meal.name
+                _i = ';'.join(meal.ingredients)
+                _p = ';'.join(meal.prep_steps)
+                _c = meal.cook_time
+                _o = meal.protein
+                _d = meal.day_id
+                csvfile.write(f"{_n},{_i},{_p},{_c},{_o},{_d}\n")
+                logger.debug(f"{_n},{_i},{_p},{_c},{_o},{_d}\n")
 
     def tearDown(self):
         os.remove(self.test_csv_file)
