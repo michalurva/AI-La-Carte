@@ -39,11 +39,3 @@ class Day(BaseEntity):
             'meals': ",".join(self.meals),
             'date': self.date
         }
-
-    def from_dict(self, data: dict):
-        ''''''
-        self.id = data['id']
-        self.week_id = data['week_id']
-        self.name = data['name']
-        self.meals = data['meals'].split(',')
-        self.date = data['date']

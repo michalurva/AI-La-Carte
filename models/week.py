@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, timedelta
 from models.base_entity import BaseEntity
 from utils.loggerX import Logger
 
@@ -17,7 +17,6 @@ class Week(BaseEntity):
         self.thu = None
         self.fri = None
         self.sat = None
-        #self.set_week_dates(start_date)
 
     @classmethod
     def from_database(cls, database_handler, row_dict):
@@ -33,15 +32,20 @@ class Week(BaseEntity):
         week.fri = row_dict['fri']
         week.sat = row_dict['sat']
         return week
+    
+    def get_days_list(self):
+        '''Get the week's days.'''
+        return [self.sun, self.mon, self.tue, self.wed, self.thu, self.fri, self.sat]
 
-    # def set_week_dates(self, start_date=None):
-    #     '''Set the week's dates by passing in the start date.'''
-    #     if start_date is None:
-    #         today = date.today()
-    #         #Calculate the Sunday of the current week
-    #         start_date = today - timedelta(days=today.weekday() + 1)
-    #     for day in self.days:
-    #         day.set_day_date(start_date)
+    def set_week_dates(self, start_date=None):
+        '''Set the week's dates by passing in the start date.'''
+        if start_date is None:
+            today = date.today()
+            #Calculate the Sunday of the current week
+            start_date = today - timedelta(days=today.weekday() + 1)
+        for day in self.get_days_list():
+            if day is not None:
+                day.set_day_date(start_date)
 
     # def update_day(self, day):
     #     '''Update a day's meal.'''
@@ -60,15 +64,3 @@ class Week(BaseEntity):
                 'fri': self.fri,
                 'sat': self.sat
                 }
-
-    def from_dict(self, data: dict):
-        '''Convert a dictionary to a Week object.'''            
-        self.id = data['id']
-        self.start_date = data['start_date']
-        self.sun = data['sun']
-        self.mon = data['mon']
-        self.tue = data['tue']
-        self.wed = data['wed']
-        self.thu = data['thu']
-        self.fri = data['fri']
-        self.sat = data['sat']

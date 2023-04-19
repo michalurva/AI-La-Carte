@@ -5,6 +5,7 @@ import csv
 import unittest
 from models.week import Week
 from models.meal import Meal
+from models.day import Day
 from utils.loggerX import Logger
 from utils.calendar_csv_handler import CalendarCSVHandler
 
@@ -22,8 +23,18 @@ class TestCalendarCSVHandler(unittest.TestCase):
                  30,
                  "Monday")
         ]
-        for day in self.week.days:
-            day.add_meal(self.test_meals[0])
+        
+        self.week.mon = Day('Monday')
+        self.week.tue = Day('Tuesday')
+        self.week.wed = Day('Wednesday')
+        self.week.thu = Day('Thursday')
+        self.week.fri = Day('Friday')
+        self.week.mon.add_meal(self.test_meals[0])
+        self.week.tue.add_meal(self.test_meals[0])
+        self.week.wed.add_meal(self.test_meals[0])
+        self.week.thu.add_meal(self.test_meals[0])
+        self.week.fri.add_meal(self.test_meals[0])
+        self.week.set_week_dates()
         self.file_path = 'test_calendar_csv.csv'
 
     def tearDown(self):

@@ -13,7 +13,9 @@ class CalendarCSVHandler:
             csv_writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             csv_writer.writeheader()
 
-            for day in week.days:
+            for day in week.get_days_list():
+                if day is None:
+                    continue
                 for meal in day.meals:
                     # Meal event
                     csv_writer.writerow({
