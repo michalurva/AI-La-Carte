@@ -35,7 +35,7 @@ class TestCalendarCSVHandler(unittest.TestCase):
         self.week.thu.add_meal(self.test_meals[0])
         self.week.fri.add_meal(self.test_meals[0])
         self.week.set_week_dates()
-        self.file_path = 'test_calendar_csv.csv'
+        self.file_path = 'data/test_calendar_csv.csv'
 
     def tearDown(self):
         if os.path.exists(self.file_path):

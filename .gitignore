@@ -7,3 +7,9 @@ meal_planner.db
 test_db_handler_2.db
 meals_copy.csv
 data/calendar.csv
+data/test_base_entity.db
+data/test_database_handler.db
+data/test_day.db
+notes
+docs/
+*.json

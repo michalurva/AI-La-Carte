@@ -9,7 +9,7 @@ logger = Logger("MealCSVHandlerTest")
 class TestMealCSVHandler(unittest.TestCase):
     '''Test the MealCSVHandler class.'''
     def setUp(self):
-        self.test_csv_file = "test_meals.csv"
+        self.test_csv_file = "data/test_meals.csv"
         self.meals = [
             Meal("Beef and Broccoli Stir-Fry",
                  ["beef", "broccoli", "onion",

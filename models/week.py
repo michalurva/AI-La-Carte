@@ -31,6 +31,7 @@ class Week(BaseEntity):
         week.thu = row_dict['thu']
         week.fri = row_dict['fri']
         week.sat = row_dict['sat']
+        logger.debug("week loaded")
         return week
 
     def get_days_list(self):

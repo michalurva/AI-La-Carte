@@ -26,7 +26,7 @@ class Logger:
         # Create a file handler and set its log level to DEBUG
         file_handler = logging.FileHandler('log.txt')
         file_handler.setLevel(logging.DEBUG)
-        
+
         # Create a console handler and set its log level to DEBUG
         console_handler = logging.StreamHandler()
         console_handler.setLevel(logging.DEBUG)
@@ -45,36 +45,45 @@ class Logger:
         self.logger.addHandler(console_handler)        
 
     def debug(self, message):
+        '''Log a debug message.'''
         self.logger.debug(message)
 
     def info(self, message):
+        '''Log an information message.'''
         self.logger.info(message)
-        
+
     def info_header(self, message):
+        '''Log an information message header'''
         self.logger.info("=======================================================")
         self.logger.info(message)
 
     def info_footer(self, message):
+        '''Log an information message footer'''
         self.logger.info(message)
         self.logger.info("=======================================================")
 
     def warning(self, message):
+        '''Log a warning message.'''
         self.logger.warning(message)
 
     def error(self, message):
+        '''Log an error message.'''
         self.logger.error(message)
 
     def critical(self, message):
+        '''Log a critical message.'''
         self.logger.critical(message)
-    
+
     #log class properties, including values of lists and dictionaries
     def log_class_properties(self, obj):
-        self.logger.info("Class properties for " + obj.__class__.__name__)
+        '''Log the properties of a class.'''
+        self.logger.debug(f"Class properties for {obj.__class__.__name__}")
         for key in obj.__dict__:
-            self.logger.info(key + ": " + str(obj.__dict__[key]))
+            self.logger.debug(f"{key}: {str(obj.__dict__[key])}")
             # if type(obj.__dict__[key]) is list:
             #     for item in obj.__dict__[key]:
             #         self.logger.info(item.__class__.__name__ + ": " + str(item))
             # elif type(obj.__dict__[key]) is dict:
             #     for item in obj.__dict__[key]:
             #         self.logger.info(item.__class__.__name__ + ": " + str(item))
+            

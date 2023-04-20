@@ -8,7 +8,7 @@ class TestDatabaseHandler(unittest.TestCase):
     '''Test the DatabaseHandler class.'''
 
     def setUp(self):
-        self.db_handler = DatabaseHandler("test_database_handler.db")
+        self.db_handler = DatabaseHandler("data/test_database_handler.db")
         self.meal = Meal('Meat and Stuff',
                          ["Meat", "Onions", "Peppers"],
                          ["Cut Meat", "etc, etc..."],

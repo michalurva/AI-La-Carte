@@ -25,7 +25,7 @@ class TestBaseEntity(unittest.TestCase):
     '''Test the base entity class.'''
 
     def setUp(self):
-        self.db_handler = DatabaseHandler("test_base_entity.db")
+        self.db_handler = DatabaseHandler("data/test_base_entity.db")
         self.create_test_table()
         self.test_entity = TestEntity(self.db_handler, field1='Test 1', field2='Test 2')
 
