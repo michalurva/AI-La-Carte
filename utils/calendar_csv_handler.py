@@ -4,8 +4,7 @@ from models.week import Week
 class CalendarCSVHandler:
     '''Handles CSV operations for Google Calendar events.'''
 
-    @staticmethod
-    def save_to_csv(week: Week, file_path: str):
+    def save_to_csv(self, week: Week, file_path: str):
         '''Save calendar events to a CSV file in Google Calendar format.'''
         with open(file_path, 'w', newline='', encoding="UTF-8") as csvfile:
             fieldnames = ['Subject', 'Start Date', 'Start Time', 'End Date', 'End Time',
@@ -25,10 +24,20 @@ class CalendarCSVHandler:
                         'End Date': day.date.strftime('%m/%d/%Y'),
                         'End Time': '',  # You can specify the end time, e.g., '7:00 PM'
                         'All Day Event': 'False',
-                        'Description': f'Cook {meal.name} for {meal.cook_time} minutes',
+                        'Description': self.format_description(meal),
                         'Location': '',
                         'Private': 'True'
                     })
 
                     # Other events (e.g., defrosting) can be added similarly
                     # You will need to determine the appropriate date and time for these events
+
+    def format_description(self, meal):
+        '''Format the description of a meal event.'''
+        formatted_ingredients = "Ingredients: "
+        fromatted_prep_steps = "Directions: "
+        for ingredient in meal.ingredients.split(","):
+            ingredient += f"\n-{ingredient}"
+        for prep_step in meal.prep_steps.split("."):
+            prep_step += f"\n-{prep_step}"
+        return formatted_ingredients + "\n" + fromatted_prep_steps
