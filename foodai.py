@@ -67,7 +67,12 @@ class food_ai():
         
     def save_recipe(self, recipe):
         # Create meal, day, and week objects
-        meal = Meal(recipe.recipe_title, recipe.ingredients, recipe.prep_steps, recipe.cook_time, recipe.day, db_handler=self.db_handler)
+        meal = Meal(recipe.recipe_title,
+                    recipe.ingredients,
+                    recipe.prep_steps,
+                    recipe.cook_time,
+                    recipe.day,
+                    db_handler=self.db_handler)
         day = Day("Tuesday", db_handler=self.db_handler)
         week = Week(db_handler=self.db_handler)
         # Add meal to day and day to week
