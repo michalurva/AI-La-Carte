@@ -52,16 +52,20 @@ class food_ai():
                                     recipe_parser,
                                     recommendation_prompt,
                                     recipe_prompt)
+        
+        logger.info("_______________user_settings_______________")
+        logger.info(self.user_settings.__str__())
+        
         # Get recommendation
         recommendation = assistant.get_recommendation(self.user_settings.day)
-        print("_______________recommendation_______________")
-        print(recommendation)
-        print("____________________________________________")
+        logger.info("_______________recommendation_______________")
+        logger.info(recommendation)
+        logger.info("____________________________________________")
         # Get recipe
         recipe = assistant.get_recipe(recommendation)
-        print("_________________recipe_____________________")
-        print(recipe)
-        print("____________________________________________")
+        logger.info("_________________recipe_____________________")
+        logger.info(recipe)
+        logger.info("____________________________________________")
         
         return recommendation, recipe
         

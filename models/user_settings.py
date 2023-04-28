@@ -12,7 +12,7 @@ class UserSettings:
 
     def __str__(self):
         '''Return a string representation of the UserSettings object'''
-        return f'UserSettings({self.skill_level}, {self.dietary_restrictions}, {self.preferences}, {self.budget_time_period}, {self.budget_amount}, {self.option_count}, {self.meal_type})'
+        return f'UserSettings({self.skill_level}, {self.dietary_restrictions}, {self.preferences}, {self.budget_time_period}, {self.budget_amount}, {self.option_count}, {self.meal_type}, {self.day})'
 
     def apply_preferences(self, preferences_list):
         '''Apply the user's preferences to the UserSettings object'''
