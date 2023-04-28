@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Planning{% endblock %}
+
+{% block head %}
+<style>
+    .loader {
+        position: fixed;
+        left: 50%;
+        top: 10%;
+        display: block;
+        width: 30px;
+        height: 30px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 70%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div><br> <br> <br>
+    <div class="loader mb-4">  </div>
+</div> 
+<div class="pt-16">
+    <div class="h-screen pt-16 flex flex-col items-center justify-center bg-gray-800">      
+        <svg class="w-full pt-16 h-16 absolute top-0" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#2D3748" d="M0 0h1440v320c-64-96-192-128-320-128-192 0-256 64-448 64S320 192 128 192C64 192 0 224 0 320z"/>
+        </svg>
+        <div class="text-center">
+            <p class="text-white text-xl font-semibold mb-6 animate__animated animate__fadeIn animate__delay-1s">Planning your meals...</p>
+            <p class="text-white text-lg mb-4 animate__animated animate__fadeIn animate__delay-2s">🥗 Selecting healthy ingredients...</p>
+            <p class="text-white text-lg mb-4 animate__animated animate__fadeIn animate__delay-3s">🍳 Generating easy-to-follow recipes...</p>
+            <p class="text-white text-lg animate__animated animate__fadeIn animate__delay-4s">🍽️ Crafting a delicious meal plan just for you...</p>
+        </div>
+    </div>
+    <br>
+    <div class ="h-screen justify-center flex flex-col items-center pt-16">
+        <form action="/recipe" method="GET">
+        <button type="recipe" class="bg-blue-500 pt-16 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded animate__animated animate__fadeIn animate__delay-5s animate__slower">Get Recipes!</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

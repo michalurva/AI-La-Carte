@@ -16,7 +16,7 @@ class RecipeAssistant:
         return output
 
     def get_recommendation(self, day):
-        rec_query = self.prompt_factory.create_recommendation_prompt(day)
+        rec_query = self.prompt_factory.create_recommendation_prompt()
         rec_output = self.execute_prompt(self.recommendation_prompt, rec_query)
         recommendation = self.recommendation_parser.parse(rec_output)
         return recommendation

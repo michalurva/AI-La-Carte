@@ -4,20 +4,11 @@ class PromptFactory:
         self.skill_level = user_settings.skill_level
         self.dietary_restrictions = user_settings.dietary_restrictions
         self.preferences = user_settings.preferences
-        self.budget = user_settings.budget
+        self.budget_time_period = user_settings.budget_time_period
+        self.budget_amount = user_settings.budget_amount
         self.option_count = user_settings.option_count
         self.meal_type = user_settings.meal_type
-
-    def create_meal_options_prompt(self, day_of_week):
-        '''Create a prompt for weekday meal options'''
-        prompt_intro = self.prompt_intro()
-        meal_basics_component = f"Please select {self.option_count} {self.meal_type} options for {day_of_week}."
-        skill_level_component = f"The meal choices, ingredients, cooking techniques, etc. should be tailored to suit a {self.skill_level} cook."
-        dietary_restriction_component = f"Please consider the following diet restrictions:{self.dietary_restrictions}"
-        food_preferences_component = f"The cook's preferences include:{self.preferences}."
-        budget_component = f"The cook is working on a {self.budget}."
-        prompt = f"{prompt_intro}\n\n{meal_basics_component}\n{skill_level_component}\n{dietary_restriction_component}\n{food_preferences_component}\n{budget_component}\n\n{self.prompt_conclusion()}"
-        return prompt
+        self.day = user_settings.day
 
     def prompt_conclusion(self):
         '''Create a prompt to conclude the meal planning session'''
@@ -43,14 +34,15 @@ class PromptFactory:
 
         return prompt
 
-    def create_recommendation_prompt(self, day_of_week):
+    def create_recommendation_prompt(self):
         '''Create a prompt for weekday meal options'''
         prompt_intro = self.prompt_intro()
-        meal_basics_component = f"Please select {self.option_count} {self.meal_type} options for {day_of_week}."
+        meal_basics_component = f"Please select {self.option_count} {self.meal_type} options for {self.day}."
         skill_level_component = f"The meal choices, ingredients, cooking techniques, etc. should be tailored to suit a {self.skill_level} cook."
         dietary_restriction_component = f"Please consider the following diet restrictions:{self.dietary_restrictions}"
         food_preferences_component = f"The cook's preferences include:{self.preferences}."
-        budget_component = f"The cook is working on a {self.budget}."
+        budget_component = f"The cook is working on a {self.budget_time_period} budget of ${self.budget_amount}."
         prompt = f"{prompt_intro}\n\n{meal_basics_component}\n{skill_level_component}\n{dietary_restriction_component}\n{food_preferences_component}\n{budget_component}\n\n{self.prompt_conclusion()}"
+
         return prompt
     

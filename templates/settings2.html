@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6 animate__animated animate__fadeInDown animate__faster">Settings Page</h1>
+        <form action="/submit" method="POST">
+            <div class="settings-group mb-6">
+                <h2 class="text-2xl font-bold mb-4 animate__animated animate__fadeInDown animate__delay-1s">Cook Information</h2>
+                <div class="form-group mb-4 animate__animated animate__fadeInDown custom-delay-1500ms">
+                    <label for="skill_level" class="block mb-2 font-bold">Skill Level:</label>
+                    <p class="text-sm text-gray-600 mb-2">Select your skill level to receive meal recommendations tailored to your culinary abilities.</p>
+                    <select name="skill_level" id="skill_level" class="bg-gray-200 text-black p-2 rounded">
+                        <option>Beginner</option>
+                        <option>Intermediate</option>
+                        <option>Experienced</option>
+                        <option>Expert</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="settings-group mb-6">
+                <h2 class="text-2xl font-bold mb-4 animate__animated animate__fadeInDown custom-delay-2000ms">Preferences</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="form-group animate__animated animate__fadeInDown custom-delay-2500ms">
+                        <label for="dietary_restrictions" class="block mb-2 font-bold">Dietary Restrictions:</label>
+                        <p class="text-sm text-gray-600 mb-2">Choose any dietary restrictions to receive suitable meal recommendations.</p>
+                        <select name="dietary_restrictions" id="dietary_restrictions" class="bg-gray-200 text-black p-2 rounded">
+                            <option>None</option>
+                            <option>Vegetarian</option>
+                            <option>Vegan</option>
+                            <option>Gluten-free</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group animate__animated animate__fadeInDown custom-delay-3000ms">
+                        <label for="preferences" class="block mb-2 font-bold">Preferences:</label>
+                        <p class="text-sm text-gray-600 mb-2">Select your preferred cuisine for more personalized meal options.</p>
+                        <select name="preferences" id="preferences" class="bg-gray-200 text-black p-2 rounded">
+                            <option>Italian</option>
+                            <option>Mexican</option>
+                            <option>Chinese</option>
+                            <option>American</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-group mb-6">
+                <h2 class="text-2xl font-bold mb-4 animate__animated animate__fadeInDown custom-delay-3500ms">Budget</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="form-group animate__animated animate__fadeInDown custom-delay-4000ms">
+                        <label for="budget_time_period" class="block mb-2 font-bold">Budget Time Period:</label>
+                        <p class="text-sm text-gray-600 mb-2">Select the time period for your budget to manage your meal expenses effectively.</p>
+                        <select name="budget_time_period" id="budget_time_period" class="bg-gray-200 text-black p-2 rounded">
+                            <option>Daily</option>
+                            <option>Weekly</option>
+                            <option>Monthly</option>
+                            <option>Yearly</option>
+                        </select>
+                    </div>
+                    <div class="form-group animate__animated animate__fadeInDown custom-delay-4500ms">
+                        <label for="budget_amount" class="block mb-2 font-bold">Budget Amount:</label>
+                        <p class="text-sm text-gray-600 mb-2">Enter the amount you want to allocate for meals during the selected time period.</p>
+                        <input type="number" name="budget_amount" id="budget_amount" value="50" class="bg-gray-200 text-black p-2 rounded">
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-group mb-6">
+                <h2 class="text-2xl font-bold mb-4 animate__animated animate__fadeInDown custom-delay-5000ms">Recommendation Specifications</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="form-group animate__animated animate__fadeInDown custom-delay-5500ms">
+                        <label for="option_count" class="block mb-2 font-bold">Option Count:</label>
+                        <p class="text-sm text-gray-600 mb-2">Choose the number of meal options you'd like to receive for each recommendation.</p>
+                        <select name="option_count" id="option_count" class="bg-gray-200 text-black p-2 rounded">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <div class="form-group animate__animated animate__fadeInDown custom-delay-6000ms">
+                        <label for="meal_type" class="block mb-2 font-bold">Meal Type:</label>
+                        <p class="text-sm text-gray-600 mb-2">Select the type of meal you'd like to receive recommendations for.</p>
+                        <select name="meal_type" id="meal_type" class="bg-gray-200 text-black p-2 rounded">
+                            <option>Breakfast</option>
+                            <option>Lunch</option>
+                            <option>Weeknight Dinner</option>
+                            <option>Weekend Dinner</option>
+                            <option>Snack</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded animate__animated animate__fadeInDown custom-delay-6500ms">Submit</button>
+        </form>
+    </div>
+{% endblock %}

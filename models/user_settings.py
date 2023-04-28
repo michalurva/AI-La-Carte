@@ -1,17 +1,18 @@
 class UserSettings:
     '''UserSettings class to store user settings'''
-    def __init__(self, skill_level, dietary_restrictions, preferences, budget, option_count, meal_type):
+    def __init__(self, skill_level, dietary_restrictions, preferences, budget_time_period, budget_amount, option_count, meal_type):
         self.skill_level = skill_level
         self.dietary_restrictions = dietary_restrictions
         self.preferences = preferences
-        self.budget = budget
+        self.budget_time_period = budget_time_period
+        self.budget_amount = budget_amount
         self.option_count = option_count
         self.meal_type = meal_type
         self.day = None
 
     def __str__(self):
         '''Return a string representation of the UserSettings object'''
-        return f'UserSettings({self.skill_level}, {self.dietary_restrictions}, {self.preferences}, {self.budget}, {self.option_count}, {self.meal_type})'
+        return f'UserSettings({self.skill_level}, {self.dietary_restrictions}, {self.preferences}, {self.budget_time_period}, {self.budget_amount}, {self.option_count}, {self.meal_type})'
 
     def apply_preferences(self, preferences_list):
         '''Apply the user's preferences to the UserSettings object'''
@@ -25,9 +26,10 @@ class UserSettings:
         '''Apply the user's skill level to the UserSettings object'''
         self.skill_level = skill_level
 
-    def apply_budget(self, budget):
+    def apply_budget(self, budget_time_period, budget_amount):
         '''Apply the user's budget to the UserSettings object'''
-        self.budget = budget
+        self.budget_time_period = budget_time_period
+        self.budget_amount = budget_amount
 
     def to_dict(self):
         '''Return a dictionary representation of the UserSettings object'''
@@ -38,16 +40,16 @@ class UserSettings:
             "skill_level": self.skill_level,
             "dietary_restrictions": self.dietary_restrictions,
             "preferences": self.preferences,
-            "budget_status": self.budget["status"],
-            "budget_period": self.budget["period"],
-            "budget_amount": self.budget["amount"]
+            "budget_period": self.budget_time_period,
+            "budget_amount": self.budget_amount
         }
 
 user_settings_to_dict = {
     'skill_level': 'beginner',
     'dietary_restrictions': 'vegetarian',
     'preferences': 'Italian',
-    'budget': 'moderate',
-    'option_count': 'three',
+    'budget_period': 'daily',
+    'budget_amount': '10',
+    'option_count': 'one',
     'meal_type': 'weeknight dinner'
 }
