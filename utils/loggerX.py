@@ -62,6 +62,12 @@ class Logger:
         self.logger.info(message)
         self.logger.info("=======================================================")
 
+    def info_header_footer(self, header, message):
+        '''Log an information message header and footer'''
+        self.logger.info(f"==================={header}===================")
+        self.logger.info(message)
+        self.logger.info("=======================================================")
+    
     def warning(self, message):
         '''Log a warning message.'''
         self.logger.warning(message)

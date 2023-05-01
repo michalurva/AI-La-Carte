@@ -2,8 +2,8 @@ class PromptFactory:
     '''This class is responsible for creating prompts to be sent to the llm.'''
     def __init__(self, user_settings):
         self.skill_level = user_settings.skill_level
-        self.dietary_restrictions = user_settings.dietary_restrictions
-        self.preferences = user_settings.preferences
+        self.dietary_restrictions = user_settings.list_dietary_restrictions()
+        self.preferences = user_settings.list_preferences()
         self.budget_time_period = user_settings.budget_time_period
         self.budget_amount = user_settings.budget_amount
         self.option_count = user_settings.option_count
@@ -39,9 +39,9 @@ class PromptFactory:
         prompt_intro = self.prompt_intro()
         meal_basics_component = f"Please select {self.option_count} {self.meal_type} options for {self.day}."
         skill_level_component = f"The meal choices, ingredients, cooking techniques, etc. should be tailored to suit a {self.skill_level} cook."
-        dietary_restriction_component = f"Please consider the following diet restrictions:{self.dietary_restrictions}"
-        food_preferences_component = f"The cook's preferences include:{self.preferences}."
-        budget_component = f"The cook is working on a {self.budget_time_period} budget of ${self.budget_amount}."
+        dietary_restriction_component = f"Please consider the following diet restrictions: {self.dietary_restrictions}"
+        food_preferences_component = f"The cook's preferences include: {self.preferences}."
+        budget_component = f"The cook is working on a {self.budget_time_period} budget of ${self.budget_amount}. If the cook sets a high budget, select finer ingredients. If the cook sets a low budget, select simpler or more common ingredients.."
         prompt = f"{prompt_intro}\n\n{meal_basics_component}\n{skill_level_component}\n{dietary_restriction_component}\n{food_preferences_component}\n{budget_component}\n\n{self.prompt_conclusion()}"
 
         return prompt

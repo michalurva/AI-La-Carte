@@ -5,81 +5,175 @@
 
 {% block content %}
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold mb-6 animate__animated animate__fadeInDown animate__faster">Settings Page</h1>
+        <h1 class="text-3xl font-bold mb-6">Settings Page</h1>
         <form action="/submit" method="POST">
-            <div class="form-group mb-4 animate__animated animate__fadeInDown animate__delay-1s">
-                <label for="skill_level" class="block mb-2 font-bold">Skill Level:</label>
-                <p class="text-sm text-white mb-2">Select your skill level to receive meal recommendations tailored to your culinary abilities.</p>
-                <select name="skill_level" id="skill_level" class="bg-gray-200 text-black p-2 rounded">
-                    <option>Beginner</option>
-                    <option>Intermediate</option>
-                    <option>Experienced</option>
-                    <option>Expert</option>
-                </select>
+            <div class="form-group mb-4">
+                <div class="form-group mb-4">
+                    <label for="skill_level" class="block mb-2 font-bold">Skill Level:</label>
+                    <p class="text-sm text-white mb-2">Select your skill level to receive meal recommendations tailored to your culinary abilities.</p>
+                    <select name="skill_level" id="skill_level" class="bg-gray-200 text-black p-2 rounded">
+                        <option>Beginner</option>
+                        <option>Intermediate</option>
+                        <option>Experienced</option>
+                        <option>Expert</option>
+                    </select>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="dietary_restrictions" class="block mb-2 font-bold">Dietary restrictions:</label>
+                    <div class="container bg-gray-200 text-black p-2 rounded max-width-check-box" >
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="dietary_restrictions" value="Dairy-free" class="form-checkbox">
+                                <span class="ml-2">Dairy-free</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="dietary_restrictions" value="Gluten-free" class="form-checkbox">
+                                <span class="ml-2">Gluten-free</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="dietary_restrictions" value="Keto" class="form-checkbox">
+                                <span class="ml-2">Keto</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="dietary_restrictions" value="Peanut-free" class="form-checkbox">
+                                <span class="ml-2">Peanut-free</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="dietary_restrictions" value="Pescetarian" class="form-checkbox">
+                                <span class="ml-2">Pescetarian</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="dietary_restrictions" value="Shellfish-free" class="form-checkbox">
+                                <span class="ml-2">Shellfish-free</span>
+                            </label>                
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="dietary_restrictions" value="Vegan" class="form-checkbox">
+                                <span class="ml-2">Vegan</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="dietary_restrictions" value="Vegetarian" class="form-checkbox">
+                                <span class="ml-2">Vegetarian</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="preferences" class="block mb-2 font-bold">Preferences:</label>
+                    <div class="container bg-gray-200 text-black p-2 rounded max-width-check-box" >
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="preferences" value="American" class="form-checkbox">
+                                <span class="ml-2">American</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="preferences" value="Chinese" class="form-checkbox">
+                                <span class="ml-2">Chinese</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="preferences" value="Filipino" class="form-checkbox">
+                                <span class="ml-2">Filipino</span>
+                            </label>
+                        </div>                            
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="preferences" value="Greek" class="form-checkbox">
+                                <span class="ml-2">Greek</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="preferences" value="Indian" class="form-checkbox">
+                                <span class="ml-2">Indian</span>
+                            </label>
+                        </div>                        
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="preferences" value="Italian" class="form-checkbox">
+                                <span class="ml-2">Italian</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="preferences" value="Japanese" class="form-checkbox">
+                                <span class="ml-2">Japanese</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="preferences" value="Mexican" class="form-checkbox">
+                                <span class="ml-2">Mexican</span>
+                            </label>
+                        </div>                    
+                        <div>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="preferences" value="Thai" class="form-checkbox">
+                                <span class="ml-2">Thai</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="budget_time_period" class="block mb-2 font-bold">Budget Time Period:</label>
+                    <select name="budget_time_period" id="budget_time_period" class="bg-gray-200 text-black p-2 rounded">
+                        <option>Daily</option>
+                        <option>Weekly</option>
+                        <option>Monthly</option>
+                        <option>Yearly</option>
+                    </select>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="budget_amount" class="block mb-2 font-bold">Budget Amount:</label>
+                    <input type="number" name="budget_amount" id="budget_amount" value="50" class="bg-gray-200 text-black p-2 rounded">
+                </div>
+                <div class="form-group mb-4">
+                    <label for="option_count" class="block mb-2 font-bold">Option Count:</label>
+                    <select name="option_count" id="option_count" class="bg-gray-200 text-black p-2 rounded">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+                <div class="form-group mb-6">
+                    <label for="meal_type" class="block mb-2 font-bold">Meal Type:</label>
+                    <select name="meal_type" id="meal_type" class="bg-gray-200 text-black p-2 rounded">
+                        <option>Breakfast</option>
+                        <option>Lunch</option>
+                        <option>Weeknight Dinner</option>
+                        <option>Weekend Dinner</option>
+                        <option>Snack</option>
+                    </select>
+                </div>
+                <div class="form-group mb-6">
+                    <label for="day" class="block mb-2 font-bold">Day of the week:</label>
+                    <select name="day" id="day" class="bg-gray-200 text-black p-2 rounded">
+                        <option>Sunday</option>
+                        <option>Monday</option>
+                        <option>Tuesday</option>
+                        <option>Wednesday</option>
+                        <option>Thursday</option>
+                        <option>Friday</option>
+                        <option>Saturday</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-group mb-4 animate__animated animate__fadeInDown custom-delay-1500ms">
-                <label for="dietary_restrictions" class="block mb-2">Dietary Restrictions:</label>
-                <select name="dietary_restrictions" id="dietary_restrictions" class="bg-gray-200 text-black p-2 rounded">
-                    <option>None</option>
-                    <option>Vegetarian</option>
-                    <option>Vegan</option>
-                    <option>Gluten-free</option>
-                    <option>Other</option>
-                </select>
-            </div>
-            <div class="form-group mb-4 animate__animated animate__fadeInDown animate__delay-2s">
-                <label for="preferences" class="block mb-2">Preferences:</label>
-                <select name="preferences" id="preferences" class="bg-gray-200 text-black p-2 rounded">
-                    <option>Italian</option>
-                    <option>Mexican</option>
-                    <option>Chinese</option>
-                    <option>American</option>
-                </select>
-            </div>
-            <div class="form-group mb-4 animate__animated animate__fadeInDown custom-delay-2500ms">
-                <label for="budget_time_period" class="block mb-2">Budget Time Period:</label>
-                <select name="budget_time_period" id="budget_time_period" class="bg-gray-200 text-black p-2 rounded">
-                    <option>Daily</option>
-                    <option>Weekly</option>
-                    <option>Monthly</option>
-                    <option>Yearly</option>
-                </select>
-            </div>
-            <div class="form-group mb-4 animate__animated animate__fadeInDown animate__delay-3s">
-                <label for="budget_amount" class="block mb-2">Budget Amount:</label>
-                <input type="number" name="budget_amount" id="budget_amount" value="50" class="bg-gray-200 text-black p-2 rounded">
-            </div>
-            <div class="form-group mb-4 animate__animated animate__fadeInDown custom-delay-3500ms">
-                <label for="option_count" class="block mb-2">Option Count:</label>
-                <select name="option_count" id="option_count" class="bg-gray-200 text-black p-2 rounded">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-            </div>
-            <div class="form-group mb-6 animate__animated animate__fadeInDown animate__delay-4s">
-                <label for="meal_type" class="block mb-2">Meal Type:</label>
-                <select name="meal_type" id="meal_type" class="bg-gray-200 text-black p-2 rounded">
-                    <option>Breakfast</option>
-                    <option>Lunch</option>
-                    <option>Weeknight Dinner</option>
-                    <option>Weekend Dinner</option>
-                    <option>Snack</option>
-                </select>
-            </div>
-            <div class="form-group mb-6 animate__animated animate__fadeInDown animate__delay-4s">
-                <label for="day" class="block mb-2">Day of the week:</label>
-                <select name="day" id="day" class="bg-gray-200 text-black p-2 rounded">
-                    <option>Sunday</option>
-                    <option>Monday</option>
-                    <option>Tuesday</option>
-                    <option>Wednesday</option>
-                    <option>Thursday</option>
-                    <option>Friday</option>
-                    <option>Saturday</option>
-                </select>
-            </div>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded animate__animated animate__fadeInDown custom-delay-4500ms">Submit</button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
         </form>
     </div>
 {% endblock %}

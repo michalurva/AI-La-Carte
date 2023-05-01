@@ -85,10 +85,10 @@ class GoogleCalendarClient:
         day =  "Sunday"
 
         # Split the ingredients into a list
-        ingredient_list = ingredients.split(', ')
+        ingredient_list = ingredients
 
         # Split the prep steps into a list
-        prep_step_list = prep_steps.split('. ')
+        prep_step_list = prep_steps
 
         # Format the recipe
         formatted_recipe = f"{recipe_title}\n\nIngredients:\n"

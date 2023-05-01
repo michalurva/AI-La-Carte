@@ -3,17 +3,40 @@
 {% block title %}Recipe{% endblock %}
 
 {% block content %}
-    <body>
-        <div class="min-h-screen flex items-center justify-center bg-gray-100">
-            <div>
-                <h1 class="text-3xl font-bold mb-4">Your Meal Plan</h1>
-                <form action="/recipe" method="GET">
-                <!-- Display meal plan content here -->
-            </div>
-            <div>
-
-            </div>
+    <div class="container mx-auto max-w-5xl py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold mb-4">Your Meal Plan</h1>
         </div>
-    </body>
-    </html>
+        <div class="mb-8">
+            <h2 class="text-center text-2xl font-bold mb-4">{{ recommendation.recipe_title }}</h2>
+            <p class="text-center mb-4">{{ recommendation.recipe_description }}</p>
+            <h3 class="text-xl font-bold mb-2">Ingredients</h3>
+            <ul class="list-disc list-inside mb-4">
+                {% for ingredient in recipe.ingredients %}
+                    <li>{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
+            <h3 class="text-xl font-bold mb-2">Preparation Steps</h3>
+            <ol class="list-decimal list-inside mb-4">
+                {% for step in recipe.prep_steps %}
+                    <li>{{ step }}</li>
+                {% endfor %}
+            </ol>
+            <h3 class="text-xl font-bold mb-2">Cooking Steps</h3>
+            <ol class="list-decimal list-inside mb-4">
+                {% for step in recipe.cook_steps %}
+                    <li>{{ step }}</li>
+                {% endfor %}
+            </ol>
+            <h3 class="text-xl font-bold mb-2">Cook Time</h3>
+            <p>{{ recipe.cook_time }} minutes</p>
+        </div>
+        <div class="text-center mb-8">
+            <form action="/updating" method="POST">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Upload to Google Calendar
+                </button>
+            </form>
+        </div>
+    </div>
 {% endblock %}

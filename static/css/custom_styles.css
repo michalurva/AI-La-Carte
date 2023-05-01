@@ -18,3 +18,7 @@
 .custom-delay-4500ms {
     animation-delay: 4.5s !important;
 }
+
+.max-width-check-box {
+    max-width: 150px;
+}

@@ -1,0 +1,18 @@
+{% block head %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var socket = io.connect('http://' + document.domain + ':' + location.port);
+        
+            socket.on('connect', function () {
+                socket.emit('start_planning');
+            });
+        
+            socket.on('planning_done', function (data) {
+                console.log(data);
+                // Update the UI with the received data
+                socket.disconnect(); // Disconnect the socket once data is received
+            });
+        });
+    </script>
+{% endblock %}

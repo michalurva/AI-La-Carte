@@ -14,22 +14,13 @@ class UserSettings:
         '''Return a string representation of the UserSettings object'''
         return f'UserSettings({self.skill_level}, {self.dietary_restrictions}, {self.preferences}, {self.budget_time_period}, {self.budget_amount}, {self.option_count}, {self.meal_type}, {self.day})'
 
-    def apply_preferences(self, preferences_list):
+    def list_preferences(self):
         '''Apply the user's preferences to the UserSettings object'''
-        self.preferences = '-'.join(preferences_list)
+        return ', '.join(self.preferences)
 
-    def apply_dietary_restrictions(self, dietary_restrictions_list):
+    def list_dietary_restrictions(self):
         '''Apply the user's dietary restrictions to the UserSettings object'''
-        self.dietary_restrictions = ','.join(dietary_restrictions_list)
-
-    def apply_skill_level(self, skill_level):
-        '''Apply the user's skill level to the UserSettings object'''
-        self.skill_level = skill_level
-
-    def apply_budget(self, budget_time_period, budget_amount):
-        '''Apply the user's budget to the UserSettings object'''
-        self.budget_time_period = budget_time_period
-        self.budget_amount = budget_amount
+        return ', '.join(self.dietary_restrictions)
 
     def to_dict(self):
         '''Return a dictionary representation of the UserSettings object'''
