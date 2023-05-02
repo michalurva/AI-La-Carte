@@ -1,7 +1,7 @@
+from api.google_api_authentication_client import GoogleOAuth2Client
 from datetime import datetime, time, timedelta
 from googleapiclient.errors import HttpError
 from googleapiclient.discovery import build
-from api.google_api_authentication_client import GoogleOAuth2Client
 
 class GoogleCalendarClient:
     def __init__(self, credentials_file, token_file, scopes):

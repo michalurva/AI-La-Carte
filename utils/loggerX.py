@@ -1,5 +1,5 @@
 import logging
-from constants import *
+from utils.constants import *
 
 class Logger:
     """

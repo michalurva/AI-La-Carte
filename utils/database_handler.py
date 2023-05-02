@@ -2,7 +2,7 @@ from typing import Optional
 import sqlite3
 from models.base_entity import BaseEntity
 from utils.loggerX import Logger
-from constants import *
+from utils.constants import *
 
 logger = Logger(__name__)
 

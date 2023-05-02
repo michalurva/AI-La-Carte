@@ -4,14 +4,13 @@ AI_MODEL_DAVINCI_003 = "text-davinci-003"
 CREDENTIALS_FILE = ""
 LOG_FILE = "C:\\Users\\mgarc\\PythonLogs\\MealPlanner\\log.txt"
 DATABASE_FILE = "data\\test_db_handler_2.db"
-GOOGLE_CREDENTIALS_FILE = "C:\Users\mgarc\PythonCreds\MealPlanner\credentials.json"
-GOOGLE_TOKEN_FILE = "C:\Users\mgarc\PythonCreds\MealPlanner\token.json"
+GOOGLE_CREDENTIALS_FILE = "C:\\Users\\mgarc\\PythonCreds\\MealPlanner\\credentials.json"
+GOOGLE_TOKEN_FILE = "C:\\Users\\mgarc\\PythonCreds\\MealPlanner\\token.json"
 
 # Test Constants
 TEST_BASE_ENTITY_DB_FILE = "tests/test_data/test_base_entity.db"
 TEST_DB_HANDLER_FILE = "tests/test_data/test_database_handler.db"
 TEST_DAY_DB_FILE = "tests/test_data/test_day.db"
-TEST_MEALS_CSV_FILE = "tests/test_data/test_meals.csv"
 TEST_SAVED_MEALS_CSV_FILE = "tests/test_data/test_saved_meals.csv"
 TEST_CALENDAR_CSV_FILE = "tests/test_data/test_calendar_csv"
 

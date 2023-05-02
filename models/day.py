@@ -29,8 +29,10 @@ class Day(BaseEntity):
 
     def set_day_date(self, start_date):
         '''Set the day's date by passing in the start date.'''
-        day_name_to_offset = {DayNames.MONDAY: 1, DayNames.TUESDAY: 2, DayNames.WEDNESDAY: 3,
-                              DayNames.THURSDAY: 4, DayNames.FRIDAY: 5, DayNames.SATURDAY: 6, DayNames.SUNDAY: 0}
+        day_name_to_offset = {DayNames.SUNDAY.value: 0, DayNames.MONDAY.value: 1, DayNames.TUESDAY.value: 2, 
+                              DayNames.WEDNESDAY.value: 3, DayNames.THURSDAY.value: 4, DayNames.FRIDAY.value: 5,
+                              DayNames.SATURDAY.value: 6
+                              }
         self.date = start_date + timedelta(days=day_name_to_offset[self.name])
 
     def to_dict(self) -> dict:
