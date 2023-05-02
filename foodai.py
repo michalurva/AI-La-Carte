@@ -1,14 +1,16 @@
 from api.google_api_calendar_client import GoogleCalendarClient
 from langchain.llms import OpenAI
 from langchain.output_parsers import PydanticOutputParser
-from models.recipe_assistant import RecipeAssistant
-from models.user_settings import UserSettings
+
+from models.day import Day
+from models.meal import Meal
 from models.prompt_template import RecipePromptTemplate
 from models.recipe import Recipe
+from models.recipe_assistant import RecipeAssistant
 from models.recommendation import Recommendation
-from models.meal import Meal
-from models.day import Day
+from models.user_settings import UserSettings
 from models.week import Week
+from utils.constants import *
 from utils.database_handler import DatabaseHandler
 from utils.loggerX import Logger
 
@@ -17,8 +19,8 @@ logger = Logger(__name__)
 
 class food_ai():
     def __init__(self):
-        self.recommendation_model = OpenAI(model_name='text-davinci-003', temperature=0.9, max_tokens=1024)
-        self.recipe_model = OpenAI(model_name='text-davinci-003', temperature=0.5, max_tokens=1024)
+        self.recommendation_model = OpenAI(model_name=AI_MODEL_DAVINCI_003, temperature=0.9, max_tokens=1024)
+        self.recipe_model = OpenAI(model_name=AI_MODEL_DAVINCI_003, temperature=0.5, max_tokens=1024)
         self.db_handler = DatabaseHandler()
         self.user_settings = None
         
@@ -79,7 +81,7 @@ class food_ai():
                     recipe.cook_time,
                     recipe.day,
                     db_handler=self.db_handler)
-        day = Day("Tuesday", db_handler=self.db_handler)
+        day = Day(self.user_settings.day, db_handler=self.db_handler)
         week = Week(db_handler=self.db_handler)
 
         # Add meal to day and day to week
@@ -92,5 +94,5 @@ class food_ai():
 
     def create_calendar_event(self, meal, week):
         # Save meal to calendar
-        client = GoogleCalendarClient("credentials.json", "token.json", scopes=["https://www.googleapis.com/auth/calendar"])
+        client = GoogleCalendarClient(GOOGLE_CREDENTIALS_FILE, GOOGLE_TOKEN_FILE, scopes=["https://www.googleapis.com/auth/calendar"])
         client.create_meal_event(meal, week.start_date)

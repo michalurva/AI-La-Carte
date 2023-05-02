@@ -1,6 +1,7 @@
 import unittest
 from utils.database_handler import DatabaseHandler
 from models.base_entity import BaseEntity
+from utils.constants import *
 
 class TestEntity(BaseEntity):
     '''Test entity for testing the base entity class.'''
@@ -25,7 +26,7 @@ class TestBaseEntity(unittest.TestCase):
     '''Test the base entity class.'''
 
     def setUp(self):
-        self.db_handler = DatabaseHandler("data/test_base_entity.db")
+        self.db_handler = DatabaseHandler(TEST_BASE_ENTITY_DB_FILE)
         self.create_test_table()
         self.test_entity = TestEntity(self.db_handler, field1='Test 1', field2='Test 2')
 

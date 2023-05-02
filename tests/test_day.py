@@ -2,12 +2,13 @@ import unittest
 from datetime import date
 from utils.database_handler import DatabaseHandler
 from models.day import Day
+from utils.constants import *
 
 class TestDay(unittest.TestCase):
     '''Test the Day class.'''
 
     def setUp(self):
-        self.db_handler = DatabaseHandler("data/test_day.db")
+        self.db_handler = DatabaseHandler(TEST_DAY_DB_FILE)
         self.create_test_table()
         self.test_day = Day("Monday", self.db_handler)
 

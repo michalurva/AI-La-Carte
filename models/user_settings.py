@@ -1,3 +1,5 @@
+from utils.constants import ValidUserSettings
+
 class UserSettings:
     '''UserSettings class to store user settings'''
     def __init__(self, skill_level, dietary_restrictions, preferences, budget_time_period, budget_amount, option_count, meal_type):
@@ -25,22 +27,12 @@ class UserSettings:
     def to_dict(self):
         '''Return a dictionary representation of the UserSettings object'''
         return {
-            "option_count": self.option_count,
-            "meal_type": self.meal_type,
-            "day": "Monday",
-            "skill_level": self.skill_level,
-            "dietary_restrictions": self.dietary_restrictions,
-            "preferences": self.preferences,
-            "budget_period": self.budget_time_period,
-            "budget_amount": self.budget_amount
+            ValidUserSettings.OPTION_COUNT: self.option_count,
+            ValidUserSettings.MEAL_TYPE: self.meal_type,
+            ValidUserSettings.DAY: "Monday",
+            ValidUserSettings.SKILL_LEVEL: self.skill_level,
+            ValidUserSettings.DIETARY_RESTRICTIONS: self.dietary_restrictions,
+            ValidUserSettings.PREFERENCES: self.preferences,
+            ValidUserSettings.BUDGET_PERIOD: self.budget_time_period,
+            ValidUserSettings.BUDGET_AMOUNT: self.budget_amount
         }
-
-user_settings_to_dict = {
-    'skill_level': 'beginner',
-    'dietary_restrictions': 'vegetarian',
-    'preferences': 'Italian',
-    'budget_period': 'daily',
-    'budget_amount': '10',
-    'option_count': 'one',
-    'meal_type': 'weeknight dinner'
-}

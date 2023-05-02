@@ -1,4 +1,5 @@
 import logging
+from constants import *
 
 class Logger:
     """
@@ -24,7 +25,7 @@ class Logger:
         self.logger.setLevel(logging.DEBUG)
 
         # Create a file handler and set its log level to DEBUG
-        file_handler = logging.FileHandler('log.txt')
+        file_handler = logging.FileHandler(LOG_FILE)
         file_handler.setLevel(logging.DEBUG)
 
         # Create a console handler and set its log level to DEBUG

@@ -3,12 +3,12 @@ from utils.database_handler import DatabaseHandler
 from models.meal import Meal
 from models.day import Day
 from models.week import Week
-
+from utils.constants import *
 class TestDatabaseHandler(unittest.TestCase):
     '''Test the DatabaseHandler class.'''
 
     def setUp(self):
-        self.db_handler = DatabaseHandler("data/test_database_handler.db")
+        self.db_handler = DatabaseHandler(TEST_DB_HANDLER_FILE)
         self.meal = Meal('Meat and Stuff',
                          ["Meat", "Onions", "Peppers"],
                          ["Cut Meat", "etc, etc..."],

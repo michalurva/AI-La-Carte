@@ -1,5 +1,6 @@
 from datetime import timedelta
 from models.base_entity import BaseEntity
+from utils.constants import DayNames
 from utils.loggerX import Logger
 
 logger = Logger(__name__)
@@ -28,8 +29,8 @@ class Day(BaseEntity):
 
     def set_day_date(self, start_date):
         '''Set the day's date by passing in the start date.'''
-        day_name_to_offset = {'Monday': 1, 'Tuesday': 2, 'Wednesday': 3,
-                              'Thursday': 4, 'Friday': 5, 'Saturday': 6, 'Sunday': 0}
+        day_name_to_offset = {DayNames.MONDAY: 1, DayNames.TUESDAY: 2, DayNames.WEDNESDAY: 3,
+                              DayNames.THURSDAY: 4, DayNames.FRIDAY: 5, DayNames.SATURDAY: 6, DayNames.SUNDAY: 0}
         self.date = start_date + timedelta(days=day_name_to_offset[self.name])
 
     def to_dict(self) -> dict:

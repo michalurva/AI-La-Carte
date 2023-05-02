@@ -1,13 +1,14 @@
-# Create a test class using python unittest with teardown and setup to test CalendarCsvHandler
-import os
 import csv
-
+import os
 import unittest
-from models.week import Week
-from models.meal import Meal
+
 from models.day import Day
-from utils.loggerX import Logger
+from models.meal import Meal
+from models.week import Week
+
 from utils.calendar_csv_handler import CalendarCSVHandler
+from utils.constants import *
+from utils.loggerX import Logger
 
 logger = Logger(__name__)
 
@@ -24,18 +25,18 @@ class TestCalendarCSVHandler(unittest.TestCase):
                  "Monday")
         ]
 
-        self.week.mon = Day('Monday')
-        self.week.tue = Day('Tuesday')
-        self.week.wed = Day('Wednesday')
-        self.week.thu = Day('Thursday')
-        self.week.fri = Day('Friday')
+        self.week.mon = Day(DayNames.MONDAY)
+        self.week.tue = Day(DayNames.TUESDAY)
+        self.week.wed = Day(DayNames.WEDNESDAY)
+        self.week.thu = Day(DayNames.THURSDAY)
+        self.week.fri = Day(DayNames.FRIDAY)
         self.week.mon.add_meal(self.test_meals[0])
         self.week.tue.add_meal(self.test_meals[0])
         self.week.wed.add_meal(self.test_meals[0])
         self.week.thu.add_meal(self.test_meals[0])
         self.week.fri.add_meal(self.test_meals[0])
         self.week.set_week_dates()
-        self.file_path = 'data/test_calendar_csv.csv'
+        self.file_path = TEST_CALENDAR_CSV_FILE
 
     def tearDown(self):
         if os.path.exists(self.file_path):

@@ -3,13 +3,14 @@ import os
 from models.meal import Meal
 from utils.loggerX import Logger
 from utils.meal_csv_handler import MealCSVHandler
+from utils.constants import *
 
-logger = Logger("MealCSVHandlerTest")
+logger = Logger(__name__)
 
 class TestMealCSVHandler(unittest.TestCase):
     '''Test the MealCSVHandler class.'''
     def setUp(self):
-        self.test_csv_file = "data/test_meals.csv"
+        self.test_csv_file = TEST_MEALS_CSV_FILE
         self.meals = [
             Meal("Beef and Broccoli Stir-Fry",
                  ["beef", "broccoli", "onion",
@@ -50,7 +51,7 @@ class TestMealCSVHandler(unittest.TestCase):
 
     def test_save_to_csv(self):
         '''Test the save_to_csv method.'''
-        saved_csv_file = "saved_meals.csv"
+        saved_csv_file = TEST_SAVED_MEALS_CSV_FILE
         MealCSVHandler.save_to_csv(self.meals, saved_csv_file)
 
         with open(saved_csv_file, 'r', encoding="UTF-8") as csvfile:

@@ -1,5 +1,7 @@
 from datetime import date, timedelta
+
 from models.base_entity import BaseEntity
+from utils.constants import *
 from utils.loggerX import Logger
 
 logger = Logger(__name__)
@@ -24,13 +26,13 @@ class Week(BaseEntity):
         start_date = row_dict['start_date']
         week = cls(start_date, database_handler)
         week.id = row_dict['id']
-        week.sun = row_dict['sun']
-        week.mon = row_dict['mon']
-        week.tue = row_dict['tue']
-        week.wed = row_dict['wed']
-        week.thu = row_dict['thu']
-        week.fri = row_dict['fri']
-        week.sat = row_dict['sat']
+        week.sun = row_dict[DayNames.SUN.value]
+        week.mon = row_dict[DayNames.MON.value]
+        week.tue = row_dict[DayNames.TUE.value]
+        week.wed = row_dict[DayNames.WED.value]
+        week.thu = row_dict[DayNames.THU.value]
+        week.fri = row_dict[DayNames.FRI.value]
+        week.sat = row_dict[DayNames.SAT.value]
         logger.debug("week loaded")
         return week
 
@@ -48,20 +50,15 @@ class Week(BaseEntity):
             if day is not None:
                 day.set_day_date(start_date)
 
-    # def update_day(self, day):
-    #     '''Update a day's meal.'''
-    #     if _day.name == day.name:
-    #         _day = day
-
     def to_dict(self) -> dict:
         '''Convert the object's properties to a dictionary.'''
         return {
                 'start_date': self.start_date,
-                'sun': self.sun,
-                'mon': self.mon,
-                'tue': self.tue,
-                'wed': self.wed,
-                'thu': self.thu,
-                'fri': self.fri,
-                'sat': self.sat
+                DayNames.SUN.value: self.sun,
+                DayNames.MON.value: self.mon,
+                DayNames.TUE.value: self.tue,
+                DayNames.WED.value: self.wed,
+                DayNames.THU.value: self.thu,
+                DayNames.FRI.value: self.fri,
+                DayNames.SAT.value: self.sat
                 }

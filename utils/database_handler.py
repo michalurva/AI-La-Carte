@@ -2,13 +2,14 @@ from typing import Optional
 import sqlite3
 from models.base_entity import BaseEntity
 from utils.loggerX import Logger
+from constants import *
 
 logger = Logger(__name__)
 
 class DatabaseHandler:
     """Handles database operations for meals."""
 
-    def __init__(self, db_name: str = "data/test_db_handler_2.db"):
+    def __init__(self, db_name: str = DATABASE_FILE):
         self.db_name = db_name
         self.db_conn = None
         self._initialize_database()
