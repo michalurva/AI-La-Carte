@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Default Title{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom_styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     {% block head %}{% endblock %}
 </head>
-<body class="text-black" style="background-image: url('{{ url_for("static", filename="images/meal_planner_homepage.png") }}');">
+<body class="text-black custom-background">
     <header>
         <nav class="bg-gray-800 text-white p-4">
             <ul class="flex justify-center">
@@ -17,7 +18,7 @@
             </ul>
         </nav>
     </header>
-    <main class="text-white pt-16 p-4" style="background-color: rgba(32, 32, 32, 0.8);">
+    <main class="text-white pt-16 p-4 custom-background">
         {% block content %}
         {% endblock %}
     </main>    

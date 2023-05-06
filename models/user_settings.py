@@ -29,7 +29,7 @@ class UserSettings:
         return {
             ValidUserSettings.OPTION_COUNT: self.option_count,
             ValidUserSettings.MEAL_TYPE: self.meal_type,
-            ValidUserSettings.DAY: "Monday",
+            ValidUserSettings.DAY: self.day,
             ValidUserSettings.SKILL_LEVEL: self.skill_level,
             ValidUserSettings.DIETARY_RESTRICTIONS: self.dietary_restrictions,
             ValidUserSettings.PREFERENCES: self.preferences,

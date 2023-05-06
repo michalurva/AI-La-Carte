@@ -2114,6 +2114,10 @@ video {
     animation-delay: 4.5s !important;
 }.max-width-check-box {
     max-width: 150px;
+}body.custom-background {
+    background-image: url('../images/meal_planner_homepage.png');
+}main.custom-background {
+    background-color: rgba(32, 32, 32, 0.8);
 }.hover\:-translate-y-1:hover{
   --tw-translate-y: -0.25rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));

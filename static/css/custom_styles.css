@@ -22,3 +22,11 @@
 .max-width-check-box {
     max-width: 150px;
 }
+
+body.custom-background {
+    background-image: url('../images/meal_planner_homepage.png');
+}
+
+main.custom-background {
+    background-color: rgba(32, 32, 32, 0.8);
+}

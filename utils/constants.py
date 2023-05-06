@@ -3,7 +3,7 @@ from enum import Enum
 AI_MODEL_DAVINCI_003 = "text-davinci-003"
 CREDENTIALS_FILE = ""
 LOG_FILE = "C:\\Users\\mgarc\\PythonLogs\\MealPlanner\\log.txt"
-DATABASE_FILE = "data\\test_db_handler_2.db"
+DATABASE_FILE = "data\\meal_planner.db"
 GOOGLE_CREDENTIALS_FILE = "C:\\Users\\mgarc\\PythonCreds\\MealPlanner\\credentials.json"
 GOOGLE_TOKEN_FILE = "C:\\Users\\mgarc\\PythonCreds\\MealPlanner\\token.json"
 
@@ -52,3 +52,11 @@ class ValidUserSettings(Enum):
     PREFERENCES = "preferences"
     BUDGET_PERIOD = "budget_period"
     BUDGET_AMOUNT = "budget_amount"
+
+#CONTENT-SECURITY POLICY
+CSP = {
+    'default-src': [
+        '\'self\'',
+        'cdnjs.cloudflare.com'
+    ]
+}
