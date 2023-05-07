@@ -1,6 +1,5 @@
 from utils.loggerX import Logger
 from utils.prompt_factory import PromptFactory
-from utils.response_cleaner import load_cleaned_json
 
 logger = Logger(__name__)
 

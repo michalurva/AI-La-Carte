@@ -6,12 +6,12 @@ from flask_talisman import Talisman
 from foodai import food_ai
 from models.recipe_store import RecipeStore
 from models.calendar_store import CalendarStore
-from utils.constants import CSP
+from utils.constants import CSP, SECRET_KEY
 from utils.input_validator import InputValidator
 
 def create_app():
     app = Flask(__name__)
-    app.secret_key = "76bc2b6148d54cc43482cafa713bb328fdf1ff90e621c2c8c936bcb18942583f"
+    app.secret_key = SECRET_KEY
     talisman = Talisman(app, content_security_policy=CSP)
 
     food_ai_service = food_ai()

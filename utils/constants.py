@@ -8,7 +8,7 @@ LOG_FILE = "C:\\Users\\mgarc\\PythonLogs\\MealPlanner\\log.txt"
 DATABASE_FILE = "data\\meal_planner.db"
 GOOGLE_CREDENTIALS_FILE = "C:\\Users\\mgarc\\PythonCreds\\MealPlanner\\credentials.json"
 GOOGLE_TOKEN_FILE = "C:\\Users\\mgarc\\PythonCreds\\MealPlanner\\token.json"
-
+SECRET_KEY = "76bc2b6148d54cc43482cafa713bb328fdf1ff90e621c2c8c936bcb18942583f"
 # Test Constants
 TEST_BASE_ENTITY_DB_FILE = "tests/test_data/test_base_entity.db"
 TEST_DB_HANDLER_FILE = "tests/test_data/test_database_handler.db"
