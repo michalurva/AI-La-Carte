@@ -37,11 +37,11 @@ class PromptFactory:
     def create_recommendation_prompt(self):
         '''Create a prompt for weekday meal options'''
         prompt_intro = self.prompt_intro()
-        meal_basics_component = f"Please select {self.option_count} {self.meal_type} options for {self.day}."
-        skill_level_component = f"The meal choices, ingredients, cooking techniques, etc. should be tailored to suit a {self.skill_level} cook."
+        meal_basics_component = f"Please generate a {self.meal_type} recipe for {self.day}."
+        skill_level_component = f"The meal choice, ingredients, cooking techniques, etc. should be tailored to suit a {self.skill_level} cook."
         dietary_restriction_component = f"Please consider the following diet restrictions: {self.dietary_restrictions}"
         food_preferences_component = f"The cook's preferences include: {self.preferences}."
-        budget_component = f"The cook is working on a {self.budget_time_period} budget of ${self.budget_amount}. If the cook sets a high budget, select finer ingredients. If the cook sets a low budget, select simpler or more common ingredients.."
+        budget_component = f"The cook is working on a {self.budget_time_period} budget of ${self.budget_amount}. If the cook sets a high budget, select finer ingredients. If the cook sets a low budget, select simpler or more common ingredients."
         prompt = f"{prompt_intro}\n\n{meal_basics_component}\n{skill_level_component}\n{dietary_restriction_component}\n{food_preferences_component}\n{budget_component}\n\n{self.prompt_conclusion()}"
 
         return prompt

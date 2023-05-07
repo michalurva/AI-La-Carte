@@ -3,44 +3,11 @@
 {% block title %}Planning{% endblock %}
 
 {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/planning.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var socket = io.connect('http://' + document.domain + ':' + location.port);
-        
-            socket.on('connect', function () {
-                socket.emit('start_planning');
-            });
-        
-            socket.on('planning_done', function (data) {
-                console.log(data);
-                // Update the UI with the received data
-                socket.disconnect(); // Disconnect the socket once data is received
-            });
-        });
-    </script>
 {% endblock %}
 
 {% block content %}
-    <style>
-        .loader {
-            position: absolute;
-            left: 46%;
-            top: 20%;
-            display: block;
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 70%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
-
     <div class="container mx-auto bg-gray-800 px-4">
         <div class="w-full">
             <svg class="w-full h-16 absolute top-0" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,34 +29,7 @@
     </div>
 
 {% block scripts %}
-    <script>
-        // Get the loader and recipe button elements by their IDs
-        const loader = document.getElementById("loader");
-        const recipeBtn = document.getElementById("recipe-btn");
-    
-        // Initially hide the recipe button
-        recipeBtn.style.display = "none";
-    
-        // Listen for the 'planning_done' event emitted by the server
-        const socket = io.connect(location.origin);
-        socket.on("planning_done", () => {
-            // Fade out the loader
-            loader.style.transition = "opacity 1s";
-            loader.style.opacity = 0;
-    
-            // Remove the loader element after the fade-out animation is complete
-            setTimeout(() => {
-                loader.remove();
-            }, 1000);
-    
-            // Fade in the recipe button
-            recipeBtn.style.transition = "opacity 1s";
-            recipeBtn.style.display = "inline-block";
-            setTimeout(() => {
-                recipeBtn.style.opacity = 1;
-            }, 100);
-        });
-    </script>
+    <script src="{{ url_for('static', filename='planning.js') }}"></script>
 {% endblock %}
     
 {% endblock %}

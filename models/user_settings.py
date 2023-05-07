@@ -18,10 +18,14 @@ class UserSettings:
 
     def list_preferences(self):
         '''Apply the user's preferences to the UserSettings object'''
+        if len(self.preferences) == 0:
+            return "None"
         return ', '.join(self.preferences)
 
     def list_dietary_restrictions(self):
         '''Apply the user's dietary restrictions to the UserSettings object'''
+        if len(self.dietary_restrictions) == 0:
+            return "None"
         return ', '.join(self.dietary_restrictions)
 
     def to_dict(self):

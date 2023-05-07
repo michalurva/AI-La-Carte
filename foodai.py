@@ -19,8 +19,8 @@ logger = Logger(__name__)
 
 class food_ai():
     def __init__(self):
-        self.recommendation_model = OpenAI(model_name=AI_MODEL_DAVINCI_003, temperature=0.9, max_tokens=1024)
-        self.recipe_model = OpenAI(model_name=AI_MODEL_DAVINCI_003, temperature=0.5, max_tokens=1024)
+        self.recommendation_model = OpenAI(model_name=AI_MODEL_GPT_4, temperature=0.9, max_tokens=1024)
+        self.recipe_model = OpenAI(model_name=AI_MODEL_GPT_35_TURBO, temperature=0.2, max_tokens=1024)
         self.db_handler = DatabaseHandler()
         self.user_settings = None
         
@@ -58,6 +58,7 @@ class food_ai():
         # Set up assistant
         assistant = RecipeAssistant(self.user_settings,
                                     self.recommendation_model,
+                                    self.recipe_model,
                                     recommendation_parser,
                                     recipe_parser,
                                     recommendation_prompt,

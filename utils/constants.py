@@ -1,6 +1,8 @@
 from enum import Enum
 
 AI_MODEL_DAVINCI_003 = "text-davinci-003"
+AI_MODEL_GPT_4 = "gpt-4"
+AI_MODEL_GPT_35_TURBO = "gpt-3.5-turbo"
 CREDENTIALS_FILE = ""
 LOG_FILE = "C:\\Users\\mgarc\\PythonLogs\\MealPlanner\\log.txt"
 DATABASE_FILE = "data\\meal_planner.db"
