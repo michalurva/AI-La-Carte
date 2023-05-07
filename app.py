@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask import current_app
-from flask_socketio import SocketIO
 from flask_talisman import Talisman
+from flask import jsonify
 
 from foodai import food_ai
 from models.recipe_store import RecipeStore
@@ -17,14 +17,13 @@ def create_app():
     food_ai_service = food_ai()
     recipe_store = RecipeStore()
     calendar_store = CalendarStore()
-    socketio = SocketIO(app)
 
     app.extensions['food_ai_service'] = food_ai_service
     app.extensions['recipe_store'] = recipe_store
     app.extensions['calendar_store'] = calendar_store
 
-    @socketio.on('start_planning')
-    def handle_start_planning():
+    @app.route('/start_planning', methods=['POST'])
+    def start_planning():
         ai_service = current_app.extensions['food_ai_service']
         recommendation, recipe = ai_service.get_recommendation()
         recipe_store.add(recommendation, recipe)
@@ -33,7 +32,7 @@ def create_app():
         # Convert recommendation and recipe objects to dictionaries
         recommendation_dict = recommendation.dict()
         recipe_dict = recipe.dict()
-        socketio.emit('planning_done', {'recommendation': recommendation_dict, 'recipe': recipe_dict})
+        return jsonify({'recommendation': recommendation_dict, 'recipe': recipe_dict})
 
     @app.route("/")
     def home():
@@ -113,8 +112,8 @@ def create_app():
         
         return render_template('recipe.html', recommendation=recommendation, recipe=recipe)
 
-    return app, socketio
+    return app
 
 if __name__ == "__main__":
-    app, socketio = create_app()
-    socketio.run(app, debug=True)
+    app = create_app()
+    app.run(host="0.0.0.0", port=5000, debug=True)

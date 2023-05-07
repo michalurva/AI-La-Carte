@@ -1,27 +1,36 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var socket = io.connect(location.origin);
+    // Get the loader and recipe button elements by their IDs
+    const loader = document.getElementById("loader");
+    const recipeBtn = document.getElementById("recipe-btn");
 
-    socket.on('connect', function () {
-        socket.emit('start_planning');
-    });
+    // Initially hide the recipe button
+    recipeBtn.style.display = "none";
 
-    socket.on('planning_done', function (data) {
-        console.log(data);
-        // Update the UI with the received data
-        socket.disconnect(); // Disconnect the socket once data is received
-    });
+    startPlanning();
 });
 
-// Get the loader and recipe button elements by their IDs
-const loader = document.getElementById("loader");
-const recipeBtn = document.getElementById("recipe-btn");
+function startPlanning() {
+    fetch('/start_planning', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
+        planningDone();
+    })
+    .catch((error) => {
+        console.error('Error during planning:', error);
+    });
+}
 
-// Initially hide the recipe button
-recipeBtn.style.display = "none";
+function planningDone() {
+    // Get the loader and recipe button elements by their IDs
+    const loader = document.getElementById("loader");
+    const recipeBtn = document.getElementById("recipe-btn");
 
-// Listen for the 'planning_done' event emitted by the server
-const socket = io.connect(location.origin);
-socket.on("planning_done", () => {
     // Fade out the loader
     loader.style.transition = "opacity 1s";
     loader.style.opacity = 0;
@@ -37,4 +46,4 @@ socket.on("planning_done", () => {
     setTimeout(() => {
         recipeBtn.style.opacity = 1;
     }, 100);
-});
+}
