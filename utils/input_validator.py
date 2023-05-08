@@ -113,11 +113,11 @@ class ValidPreferences(Enum):
     AMERICAN = "American"
     CHINESE = "Chinese"
     FILIPINO = "Filipino"
+    GREEK = "Greek"
+    INDIAN = "Indian"
     ITALIAN = "Italian"
     JAPANESE = "Japanese"
-    KOREAN = "Korean"
     MEXICAN = "Mexican"
-    SPANISH = "Spanish"
     THAI = "Thai"
     
 class ValidBudgetPeriod(Enum):
