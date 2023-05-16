@@ -13,6 +13,6 @@ class SettingsForm(Form):
     preferences = BooleanField('American')
     budget_time_period = StringField('Budget Time Period', [validators.Length(min=1, max=50)])
     budget_amount = IntegerField('Budget Amount', [validators.NumberRange(min=1)])
-    option_count = IntegerField('Option Count', [validators.NumberRange(min=1)])
+    num_servings = IntegerField('Servings', [validators.NumberRange(min=1, max=6)])
     meal_type = StringField('Meal Type', [validators.Length(min=1, max=50)])
     day = StringField('Day', [validators.Length(min=1, max=50)])

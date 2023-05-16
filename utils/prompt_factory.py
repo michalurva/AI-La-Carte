@@ -6,12 +6,13 @@ class PromptFactory:
         self.preferences = user_settings.list_preferences()
         self.budget_time_period = user_settings.budget_time_period
         self.budget_amount = user_settings.budget_amount
-        self.option_count = user_settings.option_count
+        self.num_servings = user_settings.num_servings
         self.meal_type = user_settings.meal_type
         self.day = user_settings.day
 
     def prompt_conclusion(self):
         '''Create a prompt to conclude the meal planning session'''
+        refining_line = "Please refine the recipe as much as possible. If the cook has several preferences, consider recipes that share ingredients across preferred cuisines."
         conclusion_line = "Thank you for your help!"
         return conclusion_line
 
@@ -38,11 +39,12 @@ class PromptFactory:
         '''Create a prompt for weekday meal options'''
         prompt_intro = self.prompt_intro()
         meal_basics_component = f"Please generate a {self.meal_type} recipe for {self.day}."
-        skill_level_component = f"The meal choice, ingredients, cooking techniques, etc. should be tailored to suit a {self.skill_level} cook."
+        skill_level_component = f"The meal choice, ingredients, cooking techniques, etc. should be tailored to suit a {self.skill_level} cook, cooking for {self.num_servings} people."
         dietary_restriction_component = f"Please consider the following diet restrictions: {self.dietary_restrictions}"
         food_preferences_component = f"The cook's preferences include: {self.preferences}."
         budget_component = f"The cook is working on a {self.budget_time_period} budget of ${self.budget_amount}. If the cook sets a high budget, select finer ingredients. If the cook sets a low budget, select simpler or more common ingredients."
-        prompt = f"{prompt_intro}\n\n{meal_basics_component}\n{skill_level_component}\n{dietary_restriction_component}\n{food_preferences_component}\n{budget_component}\n\n{self.prompt_conclusion()}"
+        refining_component = "Please be creative and try to randomize the occurance of what could be considered 'common' meals. Don't always provide an expected choice!"
+        prompt = f"{prompt_intro}\n\n{meal_basics_component}\n{skill_level_component}\n{dietary_restriction_component}\n{food_preferences_component}\n{budget_component}\n{refining_component}\n{self.prompt_conclusion()}"
 
         return prompt
     

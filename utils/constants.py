@@ -46,7 +46,7 @@ class DayNames(Enum):
     
 #FRONT-END CONSTANTS
 class ValidUserSettings(Enum):
-    OPTION_COUNT = "option_count"
+    NUM_SERVINGS = "num_servings"
     MEAL_TYPE = "meal_type"
     DAY = "day"
     SKILL_LEVEL = "skill_level"

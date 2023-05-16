@@ -74,7 +74,7 @@ def create_app():
         preferences = request.form.getlist('preferences')
         budget_time_period = request.form.get('budget_time_period')
         budget_amount = request.form.get('budget_amount')
-        option_count = request.form.get('option_count')
+        num_servings = request.form.get('num_servings')
         meal_type = request.form.get('meal_type')
         day = request.form.get('day')
         
@@ -84,7 +84,7 @@ def create_app():
                                         preferences,
                                         budget_time_period,
                                         budget_amount,
-                                        option_count,
+                                        num_servings,
                                         meal_type,
                                         day):
             return redirect(url_for('settings'))
@@ -95,7 +95,7 @@ def create_app():
                                         preferences,
                                         budget_time_period,
                                         budget_amount,
-                                        option_count,
+                                        num_servings,
                                         meal_type)
         
         # Set day

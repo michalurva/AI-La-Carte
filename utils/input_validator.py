@@ -27,8 +27,8 @@ class InputValidator:
             return False
 
     @staticmethod
-    def validate_option_count(option_count):
-        return option_count in (count.value for count in ValidOptionCount)
+    def validate_num_servings(num_servings):
+        return num_servings in (count.value for count in ValidServingCount)
 
     @staticmethod
     def validate_meal_type(meal_type):
@@ -39,7 +39,7 @@ class InputValidator:
         return day in (d.value for d in ValidDays)
 
     @classmethod
-    def validate_all(cls, skill_level, dietary_restrictions, preferences, budget_time_period, budget_amount, option_count, meal_type, day):
+    def validate_all(cls, skill_level, dietary_restrictions, preferences, budget_time_period, budget_amount, num_servings, meal_type, day):
         if not cls.validate_skill_level(skill_level):
             flash("Invalid skill level")
             return False
@@ -60,7 +60,7 @@ class InputValidator:
             flash("Invalid budget amount")
             return False
 
-        if not cls.validate_option_count(option_count):
+        if not cls.validate_num_servings(num_servings):
             flash("Invalid option count")
             return False
 
@@ -75,7 +75,7 @@ class InputValidator:
         return True
 
 class ValidUserSettings(Enum):
-    OPTION_COUNT = "option_count"
+    num_servings = "num_servings"
     MEAL_TYPE = "meal_type"
     DAY = "day"
     SKILL_LEVEL = "skill_level"
@@ -126,10 +126,13 @@ class ValidBudgetPeriod(Enum):
     MONTHLY = "Monthly"
     YEARLY = "Yearly"
     
-class ValidOptionCount(Enum):
+class ValidServingCount(Enum):
     ONE = "1"
     TWO = "2"
     THREE = "3"
+    FOUR = "4"
+    FIVE = "5"
+    SIX = "6"
     
 class ValidMealType(Enum):
     BREAKFAST = "Breakfast"

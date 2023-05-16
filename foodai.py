@@ -26,7 +26,7 @@ class food_ai():
         
     def update_user_settings(self, skill_level, dietary_restrictions,
                              preferences, budget_time_period, budget_amount,
-                             option_count, meal_type):
+                             num_servings, meal_type):
 
         self.user_settings = UserSettings(
             skill_level=skill_level,
@@ -34,7 +34,7 @@ class food_ai():
             preferences=preferences,
             budget_time_period=budget_time_period,
             budget_amount=budget_amount,
-            option_count=option_count,
+            num_servings=num_servings,
             meal_type=meal_type,
         )
         
